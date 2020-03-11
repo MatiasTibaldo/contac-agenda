@@ -1,11 +1,19 @@
 import React from 'react'
-import { Route, Switch } from 'react-router-dom'
-import HomePage from './pages/HomePage'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import NewContact from './pages/NewContact'
+import Header from './Header'
 
 export default function App() {
   return (
-    <Switch>
-      <Route exact path="/" component={HomePage} />
-    </Switch>
+    <div>
+      <Router>
+        <Header />
+        <div>    
+          <Switch>
+            <Route exact path="/new" component={NewContact} />
+          </Switch>
+        </div>
+      </Router>
+    </div>
   )
 }
