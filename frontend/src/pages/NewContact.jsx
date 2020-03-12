@@ -4,10 +4,11 @@ import axios from 'axios';
 
 export default class newContact extends React.Component   {
     state ={
+        id:"",
         name:"",
         lastName:"",
         email:"",
-        birthDate: undefined,
+        birthDate: "",
         phone:"",
     }
 
@@ -35,7 +36,6 @@ export default class newContact extends React.Component   {
             axios
             .post('http://localhost:9000/contactAPI/new', newContact)
             .then(() => {
-                console.log('Contact Created');
                 alert("Contacto creado");
             })
             
