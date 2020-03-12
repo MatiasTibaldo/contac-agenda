@@ -1,7 +1,7 @@
 import React from 'react'
 import Contact from '../models/Contact';
 import axios from 'axios';
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default class newContact extends React.Component   {
     state ={
@@ -31,24 +31,44 @@ export default class newContact extends React.Component   {
 
     handleNewContact =()=>{
         const newContact = new Contact(this.state);
-        console.log(newContact);
 
-        axios
-      .post('http://localhost:9000/contactAPI/new', newContact)
-      .then(() => console.log('Contact Created'))
-      .catch(err => {
-        console.error(err);
-      });
+        if(newContact.name!==""&&newContact.lastName!==""){
+            axios
+            .post('http://localhost:9000/contactAPI/new', newContact)
+            .then(() => {
+                console.log('Contact Created');
+                alert("Contacto creado");
+            })
+            
+            .catch(err => {
+                console.error(err);
+            });
+        }
     }
 
     render(){
         return (
             <form className = "NewContactForm">
-                <input className = "NameInput" name = "Nombre" value={this.state.name} onChange={this.handleNameChange}></input>
-                <input className = "LastNameInput" name = "Apellido" value={this.state.lastName} onChange={this.handleLastNameChange}></input>
-                <input className = "EmailInput" type = "email" name = "Email" value={this.state.email} onChange={this.handleEmailChange}></input>
-                <input className = "BirthDateInput" type = "date" name= "Fecha de nacimiento"value={this.state.birthDate} onChange={this.handleBirthDateChange}></input>
-                <input className = "PhoneInput" name = "Numero de telefono"value={this.state.phone} onChange={this.handlePhoneChange}></input>
+                <div>
+                    Nombre: 
+                    <input className = "NameInput" name = "Nombre" required value={this.state.name} onChange={this.handleNameChange}></input>
+                </div>
+                <div>
+                    Apellido:
+                    <input className = "LastNameInput" name = "Apellido" required value={this.state.lastName} onChange={this.handleLastNameChange}></input>
+                </div>
+                <div>
+                    Email:
+                    <input className = "EmailInput" type = "email" name = "Email" value={this.state.email} onChange={this.handleEmailChange}></input>
+                </div>
+                <div>
+                    Fecha de nacimiento:
+                    <input className = "BirthDateInput" type = "date" name= "Fecha de nacimiento"value={this.state.birthDate} onChange={this.handleBirthDateChange}></input>
+                </div>
+                <div>
+                    Telefono
+                    <input className = "PhoneInput" name = "Numero de telefono"value={this.state.phone} onChange={this.handlePhoneChange}></input>
+                </div>
                 <button type="button" onClick={this.handleNewContact}>Nuevo contacto</button>
             </form>
         );
