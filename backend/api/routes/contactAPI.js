@@ -11,4 +11,13 @@ router.post("/new", function(req, res, next) {
     res.send("Contacto creado");
 });
 
+router.get("/list", function(req, res, next) {
+    localStorage = new LocalStorage('./scratch');
+    var archive = [];
+    for (var i = 0; i<localStorage.length; i++) {
+        archive[i] = localStorage.getItem(localStorage.key(i));
+    }
+    res.send(archive);
+});
+
 module.exports = router;
