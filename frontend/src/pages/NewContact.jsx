@@ -1,7 +1,6 @@
 import React from 'react'
 import Contact from '../models/Contact';
 import axios from 'axios';
-import { Link } from 'react-router-dom'
 
 export default class newContact extends React.Component   {
     state ={
