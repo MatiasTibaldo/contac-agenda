@@ -6,7 +6,7 @@ export default function HomePage() {
     <div className="container">
       <h1>Agenda de Contactos</h1>
       <Link to="/new">
-        <button renderAs="button">
+        <button>
             <span>Nuevo contacto</span>
         </button>
       </Link>
@@ -19,9 +19,11 @@ export default function HomePage() {
       <button>
           Buscar contacto
       </button>
-      <button>
-          Listar contacto
-      </button>
+      <Link to="/list">
+        <button>
+            <span>Listar contacto</span>
+        </button>
+      </Link>
     </div>
   )
 }
