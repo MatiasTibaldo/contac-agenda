@@ -1,5 +1,6 @@
 import React from 'react'
 import Contact from '../models/Contact';
+import axios from 'axios';
 // import { Link } from 'react-router-dom'
 
 export default class newContact extends React.Component   {
@@ -31,6 +32,13 @@ export default class newContact extends React.Component   {
     handleNewContact =()=>{
         const newContact = new Contact(this.state);
         console.log(newContact);
+
+        axios
+      .post('http://localhost:9000/contactAPI/new', newContact)
+      .then(() => console.log('Contact Created'))
+      .catch(err => {
+        console.error(err);
+      });
     }
 
     render(){
