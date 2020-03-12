@@ -22,7 +22,6 @@ export default class ListContact extends React.Component   {
             this.setState({
                 listContact:list,
             })
-            console.log(list);
         })
         .catch(err => {
             console.error(err);
@@ -59,7 +58,8 @@ export default class ListContact extends React.Component   {
                         {item.phone}
                     </div>
                 </div>  
-                {this.props.onEdit && <button style={{display:"inline"}} onClick={()=>this.props.onItemClick(item)}>Editar</button>}
+                {this.props.editOn && <button style={{display:"inline"}} onClick={()=>this.props.onItemClick(item)}>Editar</button>}
+                {this.props.deleteOn && <button style={{display:"inline"}} onClick={()=>this.props.onItemClick(item)}>Eliminar</button>}
             </li>
         );
         return (
