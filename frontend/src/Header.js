@@ -15,9 +15,11 @@ export default function HomePage() {
             <span>Editar contacto</span>
         </button>
       </Link>
-      <button>
-          Eliminar contacto
-      </button>
+      <Link to="/delete">
+        <button>
+            <span>Eliminar contacto</span>
+        </button>
+      </Link>
       <button>
           Buscar contacto
       </button>

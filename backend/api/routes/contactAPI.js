@@ -26,12 +26,20 @@ router.put("/edit/:id", (req, res) =>{
     var body = req.body;
     // Obtiene el contacto anterior y lo elimina, porque cambiando un parametro cambia el id
     const idContact = req.params.id;
-    console.log(idContact);
     localStorage.removeItem(idContact);
     // Guarda un nuevo contacto
     var id = `${body.name}-${body.lastName}-${body.birthDate}-${body.email}-${body.phone}`;
     localStorage.setItem(id, JSON.stringify(body));   
     res.send("Contacto actualizado");
+});
+
+router.delete("/delete/:id", (req, res) =>{
+    localStorage = new LocalStorage('./scratch');
+    var body = req.body;
+    // Obtiene el contacto y lo elimina
+    const idContact = req.params.id;
+    localStorage.removeItem(idContact);
+    res.send("Contacto eliminado");
 });
 
 

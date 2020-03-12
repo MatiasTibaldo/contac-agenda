@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import NewContact from './pages/NewContact'
 import ListContact from './pages/ListContact'
 import EditContact from './pages/EditContact'
+import DeleteContact from './pages/DeleteContact'
 import Header from './Header'
 
 export default function App() {
@@ -15,7 +16,7 @@ export default function App() {
             <Route exact path="/new" component={NewContact} />
             <Route exact path="/list" component={ListContact} />
             <Route exact path="/edit" component={EditContact} />
-
+            <Route exact path="/delete" component={DeleteContact} />
           </Switch>
         </div>
       </Router>

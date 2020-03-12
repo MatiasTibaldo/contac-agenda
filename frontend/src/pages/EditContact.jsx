@@ -58,7 +58,7 @@ export default class EditContact extends React.Component   {
     }
 
     render(){
-        this.listContact =  <ListContact onItemClick={this.onItemClick} onEdit={true}/>
+        this.listContact =  <ListContact onItemClick={this.onItemClick} editOn={this.state.editOn}/>
         
         return (
             <div>
