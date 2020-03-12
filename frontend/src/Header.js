@@ -10,9 +10,11 @@ export default function HomePage() {
             <span>Nuevo contacto</span>
         </button>
       </Link>
-      <button>
-          Editar contacto
-      </button>
+      <Link to="/edit">
+        <button>
+            <span>Editar contacto</span>
+        </button>
+      </Link>
       <button>
           Eliminar contacto
       </button>

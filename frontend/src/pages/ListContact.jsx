@@ -22,6 +22,7 @@ export default class ListContact extends React.Component   {
             this.setState({
                 listContact:list,
             })
+            console.log(list);
         })
         .catch(err => {
             console.error(err);
@@ -30,34 +31,35 @@ export default class ListContact extends React.Component   {
     
 
     render(){
-        console.log(this.state.listContact);
         this.items = this.state.listContact.map((item, key) =>
-            <li key={key}>
-                <div> 
-                    <strong>
-                        Nombre: 
-                    </strong>
-                    {item.name}
-                </div>
-                <div> 
-                    <strong>
-                        Apellido: 
-                    </strong>
-                    {item.lastName}
-                </div>
-                <div> 
-                    Fecha de nacimiento: 
-                    {item.brithDate}
-                </div>
-                <div> 
-                    Email: 
-                    {item.email}
-                </div>
-                <div> 
-                    Telefono: 
-                    {item.phone}
-                </div>
-                <div> ----- </div>
+            <li key={key} style={{border: '1px solid black', margin: 10, maxWidth:500}}>
+                <div style={{display:"inline"}}> 
+                    <div> 
+                        <strong>
+                            Nombre: 
+                        </strong>
+                        {item.name}
+                    </div>
+                    <div> 
+                        <strong>
+                            Apellido: 
+                        </strong>
+                        {item.lastName}
+                    </div>
+                    <div> 
+                        Fecha de nacimiento: 
+                        {item.birthDate}
+                    </div>
+                    <div> 
+                        Email: 
+                        {item.email}
+                    </div>
+                    <div> 
+                        Telefono: 
+                        {item.phone}
+                    </div>
+                </div>  
+                {this.props.onEdit && <button style={{display:"inline"}} onClick={()=>this.props.onItemClick(item)}>Editar</button>}
             </li>
         );
         return (
