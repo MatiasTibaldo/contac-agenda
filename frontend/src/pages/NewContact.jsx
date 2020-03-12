@@ -41,6 +41,7 @@ export default class newContact extends React.Component   {
             
             .catch(err => {
                 console.error(err);
+                alert("Ocurrio un error. Intente nuevamente");
             });
         }
     }
