@@ -20,6 +20,7 @@ export default class ListContact extends React.Component   {
                 res.data.forEach((item)=>{
                     list.push(JSON.parse(item));
                 })
+                list.sort((a, b) => (a.lastName.toUpperCase() > b.lastName.toUpperCase()) ? 1 : -1)
                 this.setState({
                     listContact:list,
                 })
