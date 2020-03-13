@@ -4,6 +4,7 @@ import NewContact from './pages/NewContact'
 import ListContact from './pages/ListContact'
 import EditContact from './pages/EditContact'
 import DeleteContact from './pages/DeleteContact'
+import SearchContact from './pages/SearchContact'
 import Header from './Header'
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
             <Route exact path="/list" component={ListContact} />
             <Route exact path="/edit" component={EditContact} />
             <Route exact path="/delete" component={DeleteContact} />
+            <Route exact path="/search" component={SearchContact} />
           </Switch>
         </div>
       </Router>

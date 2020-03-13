@@ -12,20 +12,22 @@ export default function HomePage() {
       </Link>
       <Link to="/edit">
         <button>
-            <span>Editar contacto</span>
+            <span>Editar contactos</span>
         </button>
       </Link>
       <Link to="/delete">
         <button>
-            <span>Eliminar contacto</span>
+            <span>Eliminar contactos</span>
         </button>
       </Link>
+      <Link to="/search">
       <button>
           Buscar contacto
       </button>
+      </Link>
       <Link to="/list">
         <button>
-            <span>Listar contacto</span>
+            <span>Listar contactos</span>
         </button>
       </Link>
     </div>

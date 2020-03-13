@@ -5,6 +5,7 @@ import ListContact from './ListContact';
 
 export default class EditContact extends React.Component   {
     state ={
+        index: 0,
         editOn:true,
         name:"",
         lastName:"",
@@ -37,6 +38,12 @@ export default class EditContact extends React.Component   {
         .put(`http://localhost:9000/contactAPI/edit/${this.state.id}`, newContact)
         .then(() => {
             alert("Contacto editado correctamente");
+            var list = this.state.listContact;
+            list.splice(this.state.index,1, newContact);
+            this.setState({
+                listContact:list,
+                editOn:true,
+            })
         })
         
         .catch(err => {
@@ -45,8 +52,9 @@ export default class EditContact extends React.Component   {
         });
     }
 
-    onItemClick= (item) => {
+    onItemClick= (item, index) => {
         this.setState({
+            index: index,
             editOn:false,
             id: `${item.name}-${item.lastName}-${item.birthDate}-${item.email}-${item.phone}`,
             name:item.name,
@@ -56,9 +64,25 @@ export default class EditContact extends React.Component   {
             phone:item.phone,
         });
     }
+    componentDidMount = () =>{
+        axios
+        .get('http://localhost:9000/contactAPI/list')
+        .then((res) => {
+            var list = []
+            res.data.forEach((item)=>{
+                list.push(JSON.parse(item));
+            })
+            this.setState({
+                listContact:list,
+            });
+        })
+        .catch(err => {
+            console.error(err);
+        });
+    }
 
     render(){
-        this.listContact =  <ListContact onItemClick={this.onItemClick} editOn={this.state.editOn}/>
+        this.listContact =  <ListContact onItemClick={this.onItemClick} editOn={this.state.editOn} listContact={this.state.listContact}/>
         
         return (
             <div>

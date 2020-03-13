@@ -12,25 +12,27 @@ export default class ListContact extends React.Component   {
       }
 
     componentDidMount =()=>{
-        axios
-        .get('http://localhost:9000/contactAPI/list')
-        .then((res) => {
-            var list = []
-            res.data.forEach((item)=>{
-                list.push(JSON.parse(item));
+        if(this.props.listContact===undefined){
+            axios
+            .get('http://localhost:9000/contactAPI/list')
+            .then((res) => {
+                var list = [];
+                res.data.forEach((item)=>{
+                    list.push(JSON.parse(item));
+                })
+                this.setState({
+                    listContact:list,
+                })
             })
-            this.setState({
-                listContact:list,
-            })
-        })
-        .catch(err => {
-            console.error(err);
-        });
+            .catch(err => {
+                console.error(err);
+            });
+        }
     }
-    
 
     render(){
-        this.items = this.state.listContact.map((item, key) =>
+        const list = this.props.listContact?this.props.listContact:this.state.listContact;
+        this.items = list.map((item, key) =>
             <li key={key} style={{border: '1px solid black', margin: 10, maxWidth:500}}>
                 <div style={{display:"inline"}}> 
                     <div> 
@@ -58,8 +60,8 @@ export default class ListContact extends React.Component   {
                         {item.phone}
                     </div>
                 </div>  
-                {this.props.editOn && <button style={{display:"inline"}} onClick={()=>this.props.onItemClick(item)}>Editar</button>}
-                {this.props.deleteOn && <button style={{display:"inline"}} onClick={()=>this.props.onItemClick(item)}>Eliminar</button>}
+                {this.props.editOn && <button style={{display:"inline"}} onClick={()=>this.props.onItemClick(item,key)}>Editar</button>}
+                {this.props.deleteOn && <button style={{display:"inline"}} onClick={()=>this.props.onItemClick(item, key)}>Eliminar</button>}
             </li>
         );
         return (
