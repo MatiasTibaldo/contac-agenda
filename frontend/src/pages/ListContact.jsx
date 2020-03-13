@@ -20,6 +20,7 @@ export default class ListContact extends React.Component   {
                 res.data.forEach((item)=>{
                     list.push(JSON.parse(item));
                 })
+                list.sort((a, b) => (a.lastName.toUpperCase() > b.lastName.toUpperCase()) ? 1 : -1)
                 this.setState({
                     listContact:list,
                 })
@@ -31,10 +32,10 @@ export default class ListContact extends React.Component   {
     }
 
     render(){
-        const list = this.props.listContact?this.props.listContact:this.state.listContact;
+        const list = this.props.listContact ? this.props.listContact : this.state.listContact;
         this.items = list.map((item, key) =>
             <li key={key} style={{border: '1px solid black', margin: 10, maxWidth:500}}>
-                <div style={{display:"inline"}}> 
+                <div > 
                     <div> 
                         <strong>
                             Nombre: 
