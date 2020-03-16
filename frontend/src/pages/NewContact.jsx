@@ -32,7 +32,7 @@ export default class newContact extends React.Component   {
     handleNewContact =()=>{
         const newContact = new Contact(this.state);
 
-        if(newContact.name!==""&&newContact.lastName!==""){
+        if(newContact.name !=="" && newContact.lastName !== ""){
             axios
             .post('http://localhost:9000/contactAPI/new', newContact)
             .then(() => {
@@ -61,11 +61,16 @@ export default class newContact extends React.Component   {
                     Nombre: 
                 </div>   
                 <input className = "NameInput" name = "Nombre" required value={this.state.name} onChange={this.handleNameChange}></input>
+                {this.state.name==="" &&                
+                    <span style={{color:'red'}}>Requerido </span>
+                }
                 <div style={{marginTop:20 }}>
                     Apellido:
                 </div> 
                 <input className = "LastNameInput" name = "Apellido" required value={this.state.lastName} onChange={this.handleLastNameChange}></input>
-
+                {this.state.lastName==="" &&                
+                    <span style={{color:'red'}}>Requerido </span>
+                }
                 <div style={{marginTop:20 }}>
                     Email:
                 </div>
