@@ -51,17 +51,17 @@ export default class ListContact extends React.Component   {
         var items = [];
         this.state.listContact.forEach((item)=>{
             if(filterValue==="lastName"){
-                if(item.lastName.toLowerCase().indexOf(searchValue)>-1||item.lastName.toUpperCase().indexOf(searchValue)>-1){
+                if(item.lastName.toLowerCase().indexOf(searchValue.toLowerCase())>-1){
                     items.push(item);
                 }
             }
-            if(filterValue==="phone"){
+            if(filterValue==="phone" && item.phone!==undefined){
                 if(item.phone.indexOf(searchValue)>-1){
                     items.push(item);
                 }
             }
             if(filterValue==="name"){
-                if(item.name.toLowerCase().indexOf(searchValue)>-1||item.name.toUpperCase().indexOf(searchValue)>-1){
+                if(item.name.toLowerCase().indexOf(searchValue.toLowerCase())>-1){
                     items.push(item);
                 }
             }
@@ -108,9 +108,9 @@ export default class ListContact extends React.Component   {
                 <h2>
                     Busqueda de contactos
                 </h2> 
-                <select id="selectFilterOption" value="lastName" onChange={()=>this.onChangeSelect()}>
-                    <option value="name">Nombre</option>
+                <select id="selectFilterOption" onChange={()=>this.onChangeSelect()}>
                     <option value="lastName" >Apellido</option>
+                    <option value="name">Nombre</option>
                     <option value="phone">Telefono</option>
                 </select>
                 <input className = "SearchValue" name = "SearchValue" value={this.state.searchValue} onChange={this.handleChangeValue}></input>
