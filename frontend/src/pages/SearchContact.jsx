@@ -51,7 +51,7 @@ export default class ListContact extends React.Component   {
         var items = [];
         this.state.listContact.forEach((item)=>{
             if(filterValue==="lastName"){
-                if(item.lastName.indexOf(searchValue)>-1){
+                if(item.lastName.toLowerCase().indexOf(searchValue.toLowerCase())>-1){
                     items.push(item);
                 }
             }
@@ -61,7 +61,7 @@ export default class ListContact extends React.Component   {
                 }
             }
             if(filterValue==="name"){
-                if(item.name.indexOf(searchValue)>-1){
+                if(item.name.toLowerCase().indexOf(searchValue.toLowerCase())>-1){
                     items.push(item);
                 }
             }
