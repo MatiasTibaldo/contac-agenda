@@ -32,11 +32,19 @@ export default class newContact extends React.Component   {
     handleNewContact =()=>{
         const newContact = new Contact(this.state);
 
-        if(newContact.name!==""&&newContact.lastName!==""){
+        if(newContact.name !=="" && newContact.lastName !== ""){
             axios
             .post('http://localhost:9000/contactAPI/new', newContact)
             .then(() => {
                 alert("Contacto creado");
+                this.setState({
+                    id:"",
+                    name:"",
+                    lastName:"",
+                    email:"",
+                    birthDate: "",
+                    phone:"",
+                })
             })
             
             .catch(err => {
@@ -49,27 +57,35 @@ export default class newContact extends React.Component   {
     render(){
         return (
             <form className = "NewContactForm">
-                <div>
+                <div style={{marginTop:20 }}>
                     Nombre: 
-                    <input className = "NameInput" name = "Nombre" required value={this.state.name} onChange={this.handleNameChange}></input>
-                </div>
-                <div>
+                </div>   
+                <input className = "NameInput" name = "Nombre" required value={this.state.name} onChange={this.handleNameChange}></input>
+                {this.state.name==="" &&                
+                    <span style={{color:'red'}}>Requerido </span>
+                }
+                <div style={{marginTop:20 }}>
                     Apellido:
-                    <input className = "LastNameInput" name = "Apellido" required value={this.state.lastName} onChange={this.handleLastNameChange}></input>
-                </div>
-                <div>
+                </div> 
+                <input className = "LastNameInput" name = "Apellido" required value={this.state.lastName} onChange={this.handleLastNameChange}></input>
+                {this.state.lastName==="" &&                
+                    <span style={{color:'red'}}>Requerido </span>
+                }
+                <div style={{marginTop:20 }}>
                     Email:
-                    <input className = "EmailInput" type = "email" name = "Email" value={this.state.email} onChange={this.handleEmailChange}></input>
                 </div>
-                <div>
+                <input className = "EmailInput" type = "email" name = "Email" value={this.state.email} onChange={this.handleEmailChange}></input>
+                <div style={{marginTop:20 }}>
                     Fecha de nacimiento:
-                    <input className = "BirthDateInput" type = "date" name= "Fecha de nacimiento"value={this.state.birthDate} onChange={this.handleBirthDateChange}></input>
                 </div>
-                <div>
+                <input className = "BirthDateInput" type = "date" name= "Fecha de nacimiento"value={this.state.birthDate} onChange={this.handleBirthDateChange}></input>
+                <div style={{marginTop:20 }}>
                     Telefono
-                    <input className = "PhoneInput" name = "Numero de telefono"value={this.state.phone} onChange={this.handlePhoneChange}></input>
                 </div>
-                <button type="button" onClick={this.handleNewContact}>Nuevo contacto</button>
+                <input className = "PhoneInput" type="number" name = "Numero de telefono"value={this.state.phone} onChange={this.handlePhoneChange}></input>
+                <div style={{margin:20 }}>
+                   <button type="button" onClick={this.handleNewContact}>Nuevo contacto</button>
+                </div> 
             </form>
         );
     }
