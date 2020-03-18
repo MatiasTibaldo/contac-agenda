@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Agenda de contactos",
+  "name": "Agenda de contactos",
   "icons": [
     {
       "src": "favicon.ico",
